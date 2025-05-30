@@ -2,7 +2,7 @@
 
 > A minimalist showcase of my work, thoughts, and music taste
 
-![Portfolio Preview](public/Home.png)
+![Portfolio Preview](public/og.png)
 
 ---
 
@@ -46,16 +46,19 @@ Live site: [armaandipsinghmaan.com](https://armaandipsinghmaan.com/)
 ## Features
 
 ### Core
+
 - 🎨 **Minimalist Design**: Focus on content, reduce visual clutter
 - 📱 **Responsive Layout**: Optimized for mobile, tablet, and desktop
 - ⚡ **Performance**: Server-side rendering and image optimization
 - 🌙 **Dark/Light Mode**: User preference detection and manual toggle
 
 ### Projects & Experience
+
 - 💼 **Project Showcase**: Filter and sort by technology, date, or category
 - 📝 **Experience Timeline**: Chronological display of roles and achievements
 
 ### Blog
+
 - 📝 **Markdown Support**: Write posts in MDX with embedded React components
 - 🔍 **Syntax Highlighting**: Automatic code block formatting
 - 📊 **Real‑time Analytics**:
@@ -65,6 +68,7 @@ Live site: [armaandipsinghmaan.com](https://armaandipsinghmaan.com/)
 - 🔎 **SEO Optimized**: Auto‑generated metadata, sitemap, and Open Graph tags
 
 ### Spotify Integration
+
 - 🎵 **Current Listening Status**: Shows what track you’re playing live
 - 📈 **Top Tracks & Artists**: Weekly, monthly, all-time stats
 - 🔁 **Recently Played**: Chronological list of your last 50 plays
