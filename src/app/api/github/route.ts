@@ -1,37 +1,27 @@
-// import { updateEdgeConfig } from "@/lib/vercel";
 import redis, { getCachedGithubData } from "@/lib/redis";
-import type { Activity } from "react-activity-calendar";
 import { revalidateTag } from "next/cache";
-type GitHubContributionsApiResponse = {
-  data: Activity[];
-};
 
-export const maxDuration = 60;
-export const revalidate = 0;
-export const dynamic = "force-dynamic";
-
-export const GET = async (): Promise<Response> => {
+export async function POST(req: Request) {
   try {
-    const response = await fetch("https://github.vineet.pro/api/shahbaz-athwal");
-
-    const data = (await response.json()) as GitHubContributionsApiResponse;
-
-    if (!data.data.length) {
-      throw new Error("No contributions found");
-    }
-
+    // Replace this comment with your actual data fetching logic
+    const body = await req.json();
+    // const data = await fetch('your-github-api-endpoint');
+    // const result = await data.json();
+    
     // Size limit on free plan 😭
     // await updateEdgeConfig("github", data.data);
-    await redis.set("github", JSON.stringify(data.data));
+    
+    // Add null check here
+    if (redis) {
+      await redis.set("github", JSON.stringify(body)); // or whatever your data variable is
+    }
+    
     revalidateTag("github");
     await getCachedGithubData();
 
-    return new Response(undefined, { status: 204 });
+    return new Response("Success", { status: 200 });
   } catch (error) {
-    if (error instanceof Error) {
-      return new Response(error.message, { status: 500 });
-    }
-
-    return new Response("An unknown error occurred", { status: 500 });
+    console.error("Error in GitHub API:", error);
+    return new Response("Error", { status: 500 });
   }
-};
+}

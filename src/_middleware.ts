@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse, userAgent } from "next/server";
-
 import { geolocation } from "@vercel/functions";
 import redis from "./lib/redis";
 
@@ -12,16 +11,20 @@ export async function middleware(req: NextRequest) {
     const region = geo?.countryRegion;
     const { isBot } = userAgent(req);
 
-    if (country && city && region && !isBot) {
-      await redis.set(
-        "currentLocation",
-        JSON.stringify({
-          country,
-          city,
-          region,
-          isBot,
-        }),
-      );
+    if (country && city && region && !isBot && redis) {
+      try {
+        await redis.set(
+          "currentLocation",
+          JSON.stringify({
+            country,
+            city,
+            region,
+            isBot,
+          }),
+        );
+      } catch (error) {
+        console.error("Redis error in middleware:", error);
+      }
     }
 
     return NextResponse.next();
@@ -30,13 +33,6 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
-     */
     "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };

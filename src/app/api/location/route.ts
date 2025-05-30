@@ -1,34 +1,27 @@
-import redis, { getCachedLocationData } from "@/lib/redis";
-import { geolocation } from "@vercel/functions";
-import { userAgent } from "next/server";
-import { NextRequest } from "next/server";
+import redis, { getCachedGithubData } from "@/lib/redis";
 import { revalidateTag } from "next/cache";
-export async function POST(req: NextRequest) {
+
+export async function POST(req: Request) {
   try {
-    const geo = geolocation(req);
-
-    const country = geo?.country;
-    const city = geo?.city;
-    const region = geo?.countryRegion;
-    const { isBot } = userAgent(req);
-
-    if (!country || !city || !region || isBot) {
-      return new Response("Missing location data or bot detected", { status: 400 });
+    // Replace this comment with your actual data fetching logic
+    const body = await req.json();
+    // const data = await fetch('your-github-api-endpoint');
+    // const result = await data.json();
+    
+    // Size limit on free plan 😭
+    // await updateEdgeConfig("github", data.data);
+    
+    // Add null check here
+    if (redis) {
+      await redis.set("github", JSON.stringify(body)); // or whatever your data variable is
     }
+    
+    revalidateTag("github");
+    await getCachedGithubData();
 
-    const locationData = {
-      country,
-      city,
-      region,
-    };
-
-    await redis.set("lastLocation", JSON.stringify(locationData));
-    revalidateTag("location");
-    await getCachedLocationData();
-
-    return new Response(null, { status: 204 });
+    return new Response("Success", { status: 200 });
   } catch (error) {
-    console.error("Error tracking location:", error);
-    return new Response("Error tracking location", { status: 500 });
+    console.error("Error in GitHub API:", error);
+    return new Response("Error", { status: 500 });
   }
 }
