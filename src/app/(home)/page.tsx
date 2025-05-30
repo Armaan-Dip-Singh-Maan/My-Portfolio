@@ -16,16 +16,16 @@ export default function Home() {
     <MotionParent>
       <MotionChild>
         <Header variant="primary" as="h2" className="mb-6 text-4xl">
-          Hi, I&apos;m Shahbaz
+          Hi, I&apos;m Armaan
         </Header>
         <span className="block pb-3 text-2xl font-semibold dark:text-zinc-200">
           A full stack developer based in Canada
         </span>
         <p className="text-lg leading-normal dark:text-zinc-300/70">
-          A third year computer science student with nearly 2 years of experience in Full Stack Development. Currently,
-          I am focusing on advanced Backend and DevOps skills. Proficient with <strong>TypeScript</strong>,{" "}
+          A computer science student with nearly 2 years of experience in Full Stack Development. Currently,
+          I am focusing on advanced Backend and DevOps and AI/ML skills. Proficient with <strong>TypeScript</strong>,{" "}
           <strong>PostgreSQL</strong>, <strong>Next.js</strong>, <strong>React</strong>, <strong>Docker</strong>, and{" "}
-          <strong>Node.js</strong>.
+          <strong>Node.js</strong><strong>Jira</strong>.
         </p>
         <Link
           href="/details"
