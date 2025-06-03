@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Portfolio Website
+A modern, responsive portfolio website built with Next.js and Tailwind CSS.
 
-## Getting Started
+Features
+🌙 Dark/Light mode toggle with localStorage persistence
+📱 Fully responsive design (mobile-first approach)
+⚡ Built with Next.js for optimal performance
+🎨 Styled with Tailwind CSS
+🔗 Social media integration
+📝 Blog carousel section
+💼 Projects showcase with hover effects
+📧 Contact information display
+Getting Started
+Prerequisites
+Node.js 16.x or later
+npm or yarn package manager
+Installation
+Clone or download the project files
+Navigate to the project directory
+Install dependencies:
+bash
+npm install
 
-First, run the development server:
+# or
 
-```bash
+yarn install
+Run the development server:
+bash
 npm run dev
+
 # or
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 in your browser
+Project Structure
+my-portfolio/
+├── components/
+│ ├── Header.js # Main header with name and CTA buttons
+│ ├── SkillsCard.js # Skills section with technology tags
+│ ├── ConnectCard.js # Social media links and contact info
+│ ├── BlogCarousel.js # Blog posts carousel
+│ ├── ExperienceItem.js # Work experience section
+│ ├── ProjectCard.js # Project cards and grid
+│ ├── Footer.js # Footer with copyright
+│ └── DarkToggle.js # Dark/light mode toggle
+├── pages/
+│ ├── \_app.js # App wrapper with dark mode state
+│ └── index.js # Main homepage
+├── styles/
+│ └── globals.css # Global styles and Tailwind imports
+├── tailwind.config.js # Tailwind configuration
+├── next.config.js # Next.js configuration
+├── postcss.config.js # PostCSS configuration
+└── package.json # Dependencies and scripts
+Customization
+Personal Information
+To customize the portfolio with your own information:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Header (components/Header.js):
+Change "Aasu Yadav" to your name
+Update the description text
+Modify button actions
+Skills (components/SkillsCard.js):
+Update the skills array with your technologies
+Contact (components/ConnectCard.js):
+Update social media links in socialLinks array
+Change email and address information
+Experience (components/ExperienceItem.js):
+Update company name, position, and dates
+Add more experience items as needed
+Projects (components/ProjectCard.js):
+Update the projects array with your own projects
+Add real project URLs and images
+Footer (components/Footer.js):
+Update copyright name
+Styling
+The project uses Tailwind CSS for styling. Key color scheme:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Dark mode:
+Background:
+#111111
+Cards:
+#1a1a1a,
+#2a2a2a
+Text:
+#ffffff,
+#bbbbbb,
+#777777
+Light mode:
+Background:
+#fafafa
+Text:
+#333333
+Adding New Sections
+To add new sections:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a new component in the components/ directory
+Import and add it to pages/index.js
+Follow the existing styling patterns for consistency
+Deployment
+Vercel (Recommended)
+Push your code to a Git repository
+Import your project to Vercel
+Deploy with zero configuration
+Other Platforms
+Build the project:
 
-## Learn More
+bash
+npm run build
+npm run start
+The built files will be in the .next directory.
 
-To learn more about Next.js, take a look at the following resources:
+Technologies Used
+Next.js - React framework for production
+React - JavaScript library for building user interfaces
+Tailwind CSS - Utility-first CSS framework
+PostCSS - CSS post-processor
+Keen Slider - Lightweight carousel library
+License
+This project is open source and available under the MIT License.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributing
+Feel free to submit issues and enhancement requests!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Support
+If you need help with setup or customization, please create an issue in the repository.
